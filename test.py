@@ -1,6 +1,7 @@
+import asyncio
+
 from src.conf.config import settings
 from src.services.llm import GPT
-
 
 if __name__ == '__main__':
     gpt_agent = GPT(api_key=settings.openai_api_key)
@@ -11,9 +12,10 @@ if __name__ == '__main__':
     keywords_frequency = 8
     style = 'Продаючій'
 
-    prompt = f'Write SEO text for a blog in {lang} language with a length of approximately {symbols_count} characters on the topic "{topic}".\n\
+    prompt = f"""Write SEO text for a blog in {lang} language with a length of approximately {symbols_count} characters on the topic "{topic}".\n\
     Use the following keywords: {', '.join(keywords)}. The frequency of repetition of keywords should be {keywords_frequency}.\n\
-    The style of the text should be {style}.'
+    The style of the text should be {style}."""
     print(prompt)
-    answer = gpt_agent.get_response(prompt=prompt)
+    answer = asyncio.run(gpt_agent.get_response(prompt=prompt))
+
     print(answer)

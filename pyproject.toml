@@ -6,11 +6,11 @@ authors = ["Alex Goliansky <a_goliansky@viyar.ua>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
-fastapi = "^0.115.5"
+python = "^3.10"
 sqlalchemy = "^2.0.36"
 openai = "^1.57.4"
 pydantic-settings = "^2.7.0"
+fastapi = {version = "0.115.5", extras = ["standard"]}
 
 
 [build-system]
